@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="allProductsBtn" type="id" />
+    <item name="electronicsBtn" type="id" />
+    <item name="jeweleryBtn" type="id" />
+    <item name="menBtn" type="id" />
+    <item name="womenBtn" type="id" />
+    <item name="recyclerView" type="id" />
+</resources>
