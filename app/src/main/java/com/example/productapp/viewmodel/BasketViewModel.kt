@@ -1,17 +1,19 @@
 package com.example.productsapp.viewmodel
 
 import android.app.Application
-import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import com.example.productsapp.model.ProductsResponseItem
 import com.example.productsapp.repo.ProductsRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class BasketViewModel(application : Application) : AndroidViewModel(application) {
+@HiltViewModel
+class BasketViewModel @Inject constructor(
+    private val repository: ProductsRepository
+) : ViewModel() {
 
-    private var repository = ProductsRepository(application)
+    //private var repository = ProductsRepository(application)
 
     private var _products = MutableLiveData<List<ProductsResponseItem>>()
     val products : LiveData<List<ProductsResponseItem>>

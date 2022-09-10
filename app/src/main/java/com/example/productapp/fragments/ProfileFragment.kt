@@ -10,7 +10,9 @@ import com.example.productapp.R
 import com.example.productapp.databinding.FragmentProfileBinding
 import com.example.productapp.login.LoginActivity
 import com.example.productsapp.viewmodel.LoginViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class ProfileFragment : Fragment(R.layout.fragment_profile){
     private var fragmentBinding: FragmentProfileBinding? = null
     private val viewModel : LoginViewModel by viewModels()

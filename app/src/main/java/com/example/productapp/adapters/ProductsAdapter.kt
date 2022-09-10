@@ -7,7 +7,7 @@ import com.bumptech.glide.Glide
 import com.example.productapp.databinding.ProductsItemBinding
 import com.example.productsapp.model.ProductsResponseItem
 
-class ProductsAdapter(val productsList : List<ProductsResponseItem>,private val listener : Listener/*,private val bottomClick : Listener*/) : RecyclerView.Adapter<ProductsAdapter.ProductsViewHolder>() {
+class ProductsAdapter(val productsList : List<ProductsResponseItem>/*,private val listener : Listener*/) : RecyclerView.Adapter<ProductsAdapter.ProductsViewHolder>() {
     class ProductsViewHolder(var binding : ProductsItemBinding) : RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductsViewHolder {
@@ -22,14 +22,12 @@ class ProductsAdapter(val productsList : List<ProductsResponseItem>,private val 
             priceItem.text = "${products.price.toString()}$"
             Glide.with(holder.itemView.context).load(products.image).into(imageItem)
             basketButton.setOnClickListener {
-                listener.onItemClick(products)
+                //listener.onItemClick(products)
             }
 
         }
         holder.itemView.setOnLongClickListener {
-
-            //bottomClick.bottomSheetClick(products)
-            listener.bottomSheetClick(products)
+            //listener.bottomSheetClick(products)
             return@setOnLongClickListener true
         }
     }

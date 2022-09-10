@@ -1,34 +1,33 @@
 package com.example.productsapp.repo
 
-import android.app.Application
-import android.content.Context
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.example.productsapp.api.ProductsRetrofit
+import com.example.productsapp.api.ProductsAPI
 import com.example.productsapp.model.ProductsResponseItem
 import com.example.productsapp.roomdb.BasketDAO
-import com.example.productsapp.roomdb.BasketDatabase
+import javax.inject.Inject
 
-class ProductsRepository(application: Application) {
+class ProductsRepository @Inject constructor(
+        val dao : BasketDAO,
+        val retrofit: ProductsAPI) {
 
-    private val retrofit = ProductsRetrofit()
+ //   private val retrofit = ProductsRetrofit()
 
     val productsBasketList = MutableLiveData<List<ProductsResponseItem>>()
     val getProduct = MutableLiveData<ProductsResponseItem>()
 
-    private val dao = BasketDatabase.getDatabaseInstance(application).basketDao()
+    //private val dao = BasketDatabase.getDatabaseInstance(application).basketDao()
 
 
 
-    suspend fun getAllProducts() = retrofit.api.getAllProducts()
+    suspend fun getAllProducts() = retrofit.getAllProducts()
 
-    suspend fun getElectronics() = retrofit.api.getElectronics()
+    suspend fun getElectronics() = retrofit.getElectronics()
 
-    suspend fun getJewelery() = retrofit.api.getJewelery()
+    suspend fun getJewelery() = retrofit.getJewelery()
 
-    suspend fun getMen() = retrofit.api.getMen()
+    suspend fun getMen() = retrofit.getMen()
 
-    suspend fun getWomen() = retrofit.api.getWomen()
+    suspend fun getWomen() = retrofit.getWomen()
 
 
 
@@ -52,7 +51,5 @@ class ProductsRepository(application: Application) {
     suspend fun allDelete(){
         dao.allDelete()
     }
-
-
 
 }

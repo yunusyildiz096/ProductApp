@@ -19,7 +19,10 @@ import com.example.productapp.R
 import com.example.productapp.databinding.FragmentBasketProductsBinding
 import com.example.productsapp.adapters.BasketAdapter
 import com.example.productsapp.viewmodel.BasketViewModel
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class BasketProducts : Fragment(R.layout.fragment_basket_products){
 
     var adapter : BasketAdapter? = null

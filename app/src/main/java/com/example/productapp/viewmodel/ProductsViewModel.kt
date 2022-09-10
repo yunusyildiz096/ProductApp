@@ -1,31 +1,28 @@
 package com.example.productsapp.viewmodel
 
-import android.app.Application
 import androidx.lifecycle.*
 import com.example.productsapp.model.ProductsResponse
 import com.example.productsapp.model.ProductsResponseItem
 import com.example.productsapp.model.User
-import com.example.productsapp.repo.LoginRepository
 import com.example.productsapp.repo.ProductsRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
+@HiltViewModel
+class ProductsViewModel @Inject constructor(
+        private val repository: ProductsRepository
+) : ViewModel() {
 
-class ProductsViewModel(application: Application) : AndroidViewModel(application) {
-
-    var repository = ProductsRepository(application)
-    var logRepository = LoginRepository(application)
+    //var repository = ProductsRepository(application)
 
     init {
-        getUser()
         getAllProducts()
         getElectronics()
         getJewelery()
         getMen()
         getWomen()
     }
-    private var _userInfo = MutableLiveData<User>()
-    val userInfo : LiveData<User>
-        get() = _userInfo
 
     private var _products = MutableLiveData<List<ProductsResponseItem>>()
     val products : LiveData<List<ProductsResponseItem>>
@@ -93,9 +90,6 @@ class ProductsViewModel(application: Application) : AndroidViewModel(application
         _products = repository.productsBasketList
     }
 
-    fun getUser(){
-        logRepository.getUser()
-        _userInfo = logRepository.userInfo
-    }
+
 
 }
