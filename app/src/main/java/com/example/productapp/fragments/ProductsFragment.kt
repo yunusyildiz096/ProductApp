@@ -8,18 +8,16 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.productapp.R
+import com.example.productapp.adapters.ProductAdapter
 import com.example.productapp.databinding.FragmentProductsBinding
-import com.example.productsapp.adapters.ProductsAdapter
 import com.example.productsapp.viewmodel.ProductsViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class ProductsFragment  : Fragment(R.layout.fragment_products )/*,ProductsAdapter.Listener */{
+class ProductsFragment  : Fragment(R.layout.fragment_products ){
     private val viewModel : ProductsViewModel by viewModels()
-    var adapter : ProductsAdapter? = null
     private var fragmentBinding : FragmentProductsBinding? = null
-    //private var _binding: FragmentProductsBinding? = null
-    //private val binding get() = _binding!!
+    private val adapter by lazy { ProductAdapter() }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -40,7 +38,7 @@ class ProductsFragment  : Fragment(R.layout.fragment_products )/*,ProductsAdapte
                 jeweleryBtn.setBackgroundColor(Color.WHITE)
                 menBtn.setBackgroundColor(Color.WHITE)
                 womenBtn.setBackgroundColor(Color.WHITE)
-                adapter = ProductsAdapter(it)
+                adapter.produts = it
                 recyclerView.adapter = adapter
             })
 
@@ -53,7 +51,7 @@ class ProductsFragment  : Fragment(R.layout.fragment_products )/*,ProductsAdapte
                 menBtn.setBackgroundColor(Color.WHITE)
                 womenBtn.setBackgroundColor(Color.WHITE)
                 viewModel.productsList.observe(viewLifecycleOwner, Observer { products ->
-                        adapter = ProductsAdapter(products)
+                        adapter.produts = products
                         recyclerView.adapter = adapter
 
                 })
@@ -66,7 +64,7 @@ class ProductsFragment  : Fragment(R.layout.fragment_products )/*,ProductsAdapte
                 menBtn.setBackgroundColor(Color.WHITE)
                 womenBtn.setBackgroundColor(Color.WHITE)
                 viewModel.electronics.observe(viewLifecycleOwner, Observer { electronics ->
-                        adapter = ProductsAdapter(electronics)
+                        adapter.produts = electronics
                         recyclerView.adapter = adapter
                 })
             }
@@ -77,7 +75,7 @@ class ProductsFragment  : Fragment(R.layout.fragment_products )/*,ProductsAdapte
                 menBtn.setBackgroundColor(Color.WHITE)
                 womenBtn.setBackgroundColor(Color.WHITE)
                 viewModel.jewelery.observe(viewLifecycleOwner, Observer { jewelery ->
-                        adapter = ProductsAdapter(jewelery)
+                        adapter.produts = jewelery
                         recyclerView.adapter = adapter
 
                 })
@@ -89,7 +87,7 @@ class ProductsFragment  : Fragment(R.layout.fragment_products )/*,ProductsAdapte
                 menBtn.setBackgroundColor(Color.GRAY)
                 womenBtn.setBackgroundColor(Color.WHITE)
                 viewModel.men.observe(viewLifecycleOwner, Observer { men ->
-                        adapter = ProductsAdapter(men)
+                        adapter.produts = men
                         recyclerView.adapter = adapter
 
 
@@ -103,7 +101,7 @@ class ProductsFragment  : Fragment(R.layout.fragment_products )/*,ProductsAdapte
                 menBtn.setBackgroundColor(Color.WHITE)
                 womenBtn.setBackgroundColor(Color.GRAY)
                 viewModel.women.observe(viewLifecycleOwner, Observer { women ->
-                        adapter = ProductsAdapter(women)
+                        adapter.produts = women
                         recyclerView.adapter = adapter
 
                 })
@@ -112,69 +110,4 @@ class ProductsFragment  : Fragment(R.layout.fragment_products )/*,ProductsAdapte
 
         }
     }
-
-
-/*
-    override fun onItemClick(product: ProductsResponseItem) {
-        //viewModel.addToBasket(product)
-        val bottomSheetDialog = BottomSheetDialog(requireContext())
-        bottomSheetDialog.setContentView(R.layout.detail_product)
-
-        val bottomImage = bottomSheetDialog.findViewById<ImageView>(R.id.detailImage)
-        val bottomTitle = bottomSheetDialog.findViewById<TextView>(R.id.title)
-        val bottomDescription = bottomSheetDialog.findViewById<TextView>(R.id.detailDescription)
-        val bottomCategory = bottomSheetDialog.findViewById<TextView>(R.id.detailCategory)
-        val bottomPrice = bottomSheetDialog.findViewById<TextView>(R.id.detailPrice)
-        val cancelBottom = bottomSheetDialog.findViewById<TextView>(R.id.cancelTv)
-        val addBasket = bottomSheetDialog.findViewById<Button>(R.id.detailAddBasketButton)
-
-        Glide.with(requireContext()).load(product.image).into(bottomImage!!)
-        bottomTitle!!.text = product.title
-        bottomDescription!!.text = product.description
-        bottomCategory!!.text = product.category
-        bottomPrice!!.text = product.price.toString()
-        cancelBottom!!.setOnClickListener {
-            bottomSheetDialog.cancel()
-        }
-        addBasket!!.setOnClickListener {
-            bottomSheetDialog.dismiss()
-            viewModel.addToBasket(product)
-        }
-
-        bottomSheetDialog.setCancelable(false)
-        bottomSheetDialog.show()
-    }
-
-    override fun bottomSheetClick(product: ProductsResponseItem) {
-
-        val bottomSheetDialog = BottomSheetDialog(requireContext())
-        bottomSheetDialog.setContentView(R.layout.detail_product)
-
-        val bottomImage = bottomSheetDialog.findViewById<ImageView>(R.id.detailImage)
-        val bottomTitle = bottomSheetDialog.findViewById<TextView>(R.id.title)
-        val bottomDescription = bottomSheetDialog.findViewById<TextView>(R.id.detailDescription)
-        val bottomCategory = bottomSheetDialog.findViewById<TextView>(R.id.detailCategory)
-        val bottomPrice = bottomSheetDialog.findViewById<TextView>(R.id.detailPrice)
-        val cancelBottom = bottomSheetDialog.findViewById<TextView>(R.id.cancelTv)
-        val addBasket = bottomSheetDialog.findViewById<Button>(R.id.detailAddBasketButton)
-
-        Glide.with(requireContext()).load(product.image).into(bottomImage!!)
-        bottomTitle!!.text = product.title
-        bottomDescription!!.text = product.description
-        bottomCategory!!.text = product.category
-        bottomPrice!!.text = "${product.price.toString()}$"
-
-        cancelBottom!!.setOnClickListener {
-            bottomSheetDialog.cancel()
-        }
-        addBasket!!.setOnClickListener {
-            bottomSheetDialog.dismiss()
-            viewModel.addToBasket(product)
-        }
-
-        bottomSheetDialog.setCancelable(false)
-        bottomSheetDialog.show()
-    }
-
- */
 }

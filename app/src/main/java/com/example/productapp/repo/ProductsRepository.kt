@@ -44,9 +44,13 @@ class ProductsRepository @Inject constructor(
         dao.deleteBasket(products)
     }
     fun getBaskets(){
+        val getBaskets = dao.getBaskets()
+        productsBasketList.value = getBaskets!!
+        /*
          dao.getBaskets().let {
             productsBasketList.value = it
         }
+         */
     }
     suspend fun allDelete(){
         dao.allDelete()

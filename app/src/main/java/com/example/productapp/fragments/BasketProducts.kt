@@ -16,6 +16,7 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.productapp.R
+import com.example.productapp.adapters.ProductAdapter
 import com.example.productapp.databinding.FragmentBasketProductsBinding
 import com.example.productsapp.adapters.BasketAdapter
 import com.example.productsapp.viewmodel.BasketViewModel
@@ -25,9 +26,10 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class BasketProducts : Fragment(R.layout.fragment_basket_products){
 
-    var adapter : BasketAdapter? = null
     var fragmentBinding : FragmentBasketProductsBinding? = null
     private val viewModel : BasketViewModel by viewModels()
+    private val adapter by lazy { BasketAdapter() }
+
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -38,16 +40,7 @@ class BasketProducts : Fragment(R.layout.fragment_basket_products){
         observeLiveData()
         dialog()
 
-        fragmentBinding!!.basketRecyclerView.layoutManager = LinearLayoutManager(requireContext())
         fragmentBinding!!.paymentLinearLayout.visibility = View.GONE
-        if(activity is AppCompatActivity){
-            (activity as AppCompatActivity).setSupportActionBar(fragmentBinding!!.toolBar)
-        }
-        fragmentBinding!!.toolBar.setNavigationOnClickListener {
-
-            findNavController().navigate(BasketProductsDirections.actionBasketProductsToProductsFragment())
-        }
-
         setHasOptionsMenu(true)
 
         fragmentBinding!!.swipeRefreshLayout.setOnRefreshListener {
@@ -89,9 +82,10 @@ class BasketProducts : Fragment(R.layout.fragment_basket_products){
     }
 
     private fun observeLiveData(){
+        fragmentBinding!!.basketRecyclerView.layoutManager = LinearLayoutManager(requireContext())
         viewModel.products.observe(viewLifecycleOwner, Observer { basket ->
             basket.let {
-                adapter = BasketAdapter(it)
+                adapter.baskets = it
                 fragmentBinding!!.basketRecyclerView.adapter = adapter
                 var total = 0f
                 for(i in it){
@@ -125,7 +119,15 @@ class BasketProducts : Fragment(R.layout.fragment_basket_products){
 
       }
 
+      if(activity is AppCompatActivity){
+          (activity as AppCompatActivity).setSupportActionBar(fragmentBinding!!.toolBar)
+      }
+      fragmentBinding!!.toolBar.setNavigationOnClickListener {
+
+          findNavController().navigate(BasketProductsDirections.actionBasketProductsToProductsFragment())
+      }
 
   }
+
 
 }
