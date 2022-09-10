@@ -1,6 +1,7 @@
 package com.example.productsapp.fragments
 
 import android.graphics.Color
+import android.nfc.Tag
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
@@ -10,6 +11,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.example.productapp.R
 import com.example.productapp.adapters.ProductAdapter
 import com.example.productapp.databinding.FragmentProductsBinding
+import com.example.productapp.fragments.DetailFragment
 import com.example.productsapp.viewmodel.ProductsViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -24,13 +26,12 @@ class ProductsFragment  : Fragment(R.layout.fragment_products ){
         val binding = FragmentProductsBinding.bind(view)
         fragmentBinding = binding
         observeLiveData()
+        clickBottomSheet()
         fragmentBinding!!.recyclerView.layoutManager = GridLayoutManager(requireContext(),2)
 
     }
 
-
     private fun observeLiveData() {
-
         with(fragmentBinding!!) {
             viewModel.productsList.observe(viewLifecycleOwner, Observer {
                 allProductsBtn.setBackgroundColor(Color.GRAY)
@@ -42,8 +43,6 @@ class ProductsFragment  : Fragment(R.layout.fragment_products ){
                 recyclerView.adapter = adapter
             })
 
-
-
             allProductsBtn.setOnClickListener {
                 allProductsBtn.setBackgroundColor(Color.GRAY)
                 electronicsBtn.setBackgroundColor(Color.WHITE)
@@ -53,7 +52,6 @@ class ProductsFragment  : Fragment(R.layout.fragment_products ){
                 viewModel.productsList.observe(viewLifecycleOwner, Observer { products ->
                         adapter.produts = products
                         recyclerView.adapter = adapter
-
                 })
             }
 
@@ -68,6 +66,7 @@ class ProductsFragment  : Fragment(R.layout.fragment_products ){
                         recyclerView.adapter = adapter
                 })
             }
+
             jeweleryBtn.setOnClickListener {
                 allProductsBtn.setBackgroundColor(Color.WHITE)
                 electronicsBtn.setBackgroundColor(Color.WHITE)
@@ -80,6 +79,7 @@ class ProductsFragment  : Fragment(R.layout.fragment_products ){
 
                 })
             }
+
             menBtn.setOnClickListener {
                 allProductsBtn.setBackgroundColor(Color.WHITE)
                 electronicsBtn.setBackgroundColor(Color.WHITE)
@@ -89,8 +89,6 @@ class ProductsFragment  : Fragment(R.layout.fragment_products ){
                 viewModel.men.observe(viewLifecycleOwner, Observer { men ->
                         adapter.produts = men
                         recyclerView.adapter = adapter
-
-
                 })
             }
 
@@ -103,11 +101,16 @@ class ProductsFragment  : Fragment(R.layout.fragment_products ){
                 viewModel.women.observe(viewLifecycleOwner, Observer { women ->
                         adapter.produts = women
                         recyclerView.adapter = adapter
-
                 })
             }
+        }
+    }
 
-
+    private fun clickBottomSheet(){
+        adapter.onItemClick = {
+            val bottomSheetDialogFragment = DetailFragment()
+            bottomSheetDialogFragment.show(requireFragmentManager(),tag)
+            viewModel.addToBasket(it)
         }
     }
 }

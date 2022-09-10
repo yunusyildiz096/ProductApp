@@ -3,6 +3,7 @@ package com.example.productapp.adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.AsyncListDiffer
@@ -16,6 +17,7 @@ import com.example.productsapp.model.ProductsResponseItem
 class ProductAdapter : RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() {
     class ProductViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView)
 
+    var onItemClick : ((ProductsResponseItem) -> Unit)? = null
     private val diffUtil = object  : DiffUtil.ItemCallback<ProductsResponseItem>(){
         override fun areItemsTheSame(
             oldItem: ProductsResponseItem,
@@ -49,11 +51,14 @@ class ProductAdapter : RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() 
         val imageView = holder.itemView.findViewById<ImageView>(R.id.imageItem)
         val titleText = holder.itemView.findViewById<TextView>(R.id.titleItem)
         val priceText = holder.itemView.findViewById<TextView>(R.id.priceItem)
+        val basketButton = holder.itemView.findViewById<Button>(R.id.basketButton)
 
         titleText.text = productList.title
         priceText.text = "${productList.price.toString()}$"
         imageView.downloadFromUrl(productList.image, placeHolderProgressBar(holder.itemView.context))
-
+        basketButton.setOnClickListener {
+            onItemClick!!.invoke(productList)
+        }
     }
 
     override fun getItemCount(): Int {
