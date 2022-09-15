@@ -6,6 +6,13 @@
     android:layout_marginTop="10dp"
     android:orientation="vertical">
 
+    <ImageView
+        android:id="@+id/favoriteIv"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginLeft="100dp"
+        android:src="@drawable/ic_favorite_border"/>
+
     <LinearLayout
         android:layout_width="150dp"
         android:layout_height="wrap_content"
@@ -16,29 +23,13 @@
             android:id="@+id/imageItem"
             android:layout_width="140dp"
             android:layout_height="140dp"
+            android:layout_gravity="center"
             android:src="@mipmap/ic_launcher" />
 
-        <Button
-            android:id="@+id/basketButton"
-            android:layout_width="40dp"
-            android:backgroundTint="@color/app_color"
-            android:layout_height="wrap_content"
-            android:text="+"
-            android:layout_marginLeft="110dp"
-            android:layout_marginTop="-140dp"
-            android:textSize="20sp"/>
 
 
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/priceItem"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/app_color"
-        android:textStyle="bold"
-        android:layout_marginLeft="10dp"
-        android:text="15.50$"/>
 
     <TextView
         android:id="@+id/titleItem"
@@ -51,5 +42,15 @@
         android:layout_marginLeft="10dp"
         android:layout_marginTop="5dp"
         android:text="Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops"/>
+
+    <TextView
+        android:id="@+id/priceItem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/app_color"
+        android:textStyle="bold"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:text="15.50$"/>
 
 </LinearLayout>

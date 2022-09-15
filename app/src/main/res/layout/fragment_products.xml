@@ -14,12 +14,12 @@
             android:id="@+id/profileName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
+            android:layout_marginStart="15dp"
             android:layout_marginTop="10dp"
-            android:textColor="@color/black"
-            android:textSize="15sp"
-            android:textStyle="bold"
-            android:text="Welcome,"/>
+            android:textColor="@color/gray"
+            android:textSize="18sp"
+            android:layout_gravity="center"
+            android:textStyle="bold" />
 
     </LinearLayout>
 
@@ -41,17 +41,17 @@
 
                 <Button
                     android:id="@+id/allProductsBtn"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
                     android:backgroundTint="@color/white"
-                    android:text="ALL"
+                    android:text="All"
                     android:textColor="@color/black"
                     android:textAllCaps="false" />
 
                 <Button
                     android:id="@+id/electronicsBtn"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
                     android:backgroundTint="@color/white"
@@ -61,7 +61,7 @@
 
                 <Button
                     android:id="@+id/jeweleryBtn"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
                     android:backgroundTint="@color/white"
@@ -69,25 +69,6 @@
                     android:text="Jewelery"
                     android:textAllCaps="false" />
 
-                <Button
-                    android:id="@+id/menBtn"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:textColor="@color/black"
-                    android:backgroundTint="@color/white"
-                    android:text="Men's clothing"
-                    android:textAllCaps="false" />
-
-                <Button
-                    android:id="@+id/womenBtn"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:textColor="@color/black"
-                    android:backgroundTint="@color/white"
-                    android:text="Women's clothing"
-                    android:textAllCaps="false" />
 
             </LinearLayout>
         </HorizontalScrollView>

@@ -7,29 +7,19 @@ import com.example.productsapp.roomdb.BasketDAO
 import javax.inject.Inject
 
 class ProductsRepository @Inject constructor(
-        val dao : BasketDAO,
-        val retrofit: ProductsAPI) {
+    private val dao : BasketDAO,
+    private val retrofit: ProductsAPI){
 
- //   private val retrofit = ProductsRetrofit()
+
 
     val productsBasketList = MutableLiveData<List<ProductsResponseItem>>()
-    val getProduct = MutableLiveData<ProductsResponseItem>()
-
-    //private val dao = BasketDatabase.getDatabaseInstance(application).basketDao()
-
-
+    private val getProduct = MutableLiveData<ProductsResponseItem>()
 
     suspend fun getAllProducts() = retrofit.getAllProducts()
 
     suspend fun getElectronics() = retrofit.getElectronics()
 
     suspend fun getJewelery() = retrofit.getJewelery()
-
-    suspend fun getMen() = retrofit.getMen()
-
-    suspend fun getWomen() = retrofit.getWomen()
-
-
 
     suspend fun insertBasket(products : ProductsResponseItem){
         dao.addToBasket(products)
@@ -38,22 +28,21 @@ class ProductsRepository @Inject constructor(
     suspend fun getBasket(basketId : Int){
         val products = dao.getBasket(basketId)
         getProduct.value = products
-
     }
+
     suspend fun deleteBasket(products: ProductsResponseItem){
         dao.deleteBasket(products)
     }
+
     fun getBaskets(){
         val getBaskets = dao.getBaskets()
-        productsBasketList.value = getBaskets!!
-        /*
-         dao.getBaskets().let {
-            productsBasketList.value = it
-        }
-         */
+        productsBasketList.value = getBaskets
     }
+
     suspend fun allDelete(){
         dao.allDelete()
     }
+
+
 
 }

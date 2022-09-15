@@ -9,7 +9,7 @@
         android:icon="@drawable/ic_baseline_shopping_basket_24"
         android:title="Basket"/>
     <item android:id="@+id/profile"
-        android:icon="@drawable/user"
+        android:icon="@drawable/ic_baseline_person_24"
         android:title="Profile"/>
 
 </menu>

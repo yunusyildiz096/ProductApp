@@ -1,5 +1,6 @@
 package com.example.productsapp.roomdb
 
+import android.widget.ImageView
 import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.example.productsapp.model.ProductsResponseItem
@@ -10,13 +11,11 @@ interface BasketDAO {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun addToBasket(products :ProductsResponseItem)
 
-
     @Delete
     suspend fun deleteBasket(products : ProductsResponseItem)
 
     @Query("SELECT * FROM basket")
-    fun getBaskets() : List<ProductsResponseItem>?
-
+    fun getBaskets() : List<ProductsResponseItem>
 
     @Query("SELECT * FROM basket WHERE id = :basketId")
     suspend fun getBasket(basketId : Int) : ProductsResponseItem

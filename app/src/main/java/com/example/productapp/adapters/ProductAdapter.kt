@@ -3,21 +3,22 @@ package com.example.productapp.adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.productapp.R
 import com.example.productapp.util.downloadFromUrl
 import com.example.productapp.util.placeHolderProgressBar
+import com.example.productsapp.fragments.ProductsFragmentDirections
 import com.example.productsapp.model.ProductsResponseItem
 
 class ProductAdapter : RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() {
     class ProductViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView)
 
-    var onItemClick : ((ProductsResponseItem) -> Unit)? = null
+    //var onItemClick : ((ImageView) -> Unit)? = null
     private val diffUtil = object  : DiffUtil.ItemCallback<ProductsResponseItem>(){
         override fun areItemsTheSame(
             oldItem: ProductsResponseItem,
@@ -51,14 +52,16 @@ class ProductAdapter : RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() 
         val imageView = holder.itemView.findViewById<ImageView>(R.id.imageItem)
         val titleText = holder.itemView.findViewById<TextView>(R.id.titleItem)
         val priceText = holder.itemView.findViewById<TextView>(R.id.priceItem)
-        val basketButton = holder.itemView.findViewById<Button>(R.id.basketButton)
+        //val basketButton = holder.itemView.findViewById<Button>(R.id.basketButton)
 
-        titleText.text = productList.title
-        priceText.text = "${productList.price.toString()}$"
+        //titleText.text = productList.title
+        priceText.text = "${productList.price.toString().toFloat()}$"
         imageView.downloadFromUrl(productList.image, placeHolderProgressBar(holder.itemView.context))
-        basketButton.setOnClickListener {
-            onItemClick!!.invoke(productList)
+        holder.itemView.setOnClickListener {
+            val nav = ProductsFragmentDirections.actionHomeToDetailFragment(productList)
+            Navigation.findNavController(it).navigate(nav)
         }
+
     }
 
     override fun getItemCount(): Int {

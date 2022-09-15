@@ -4,24 +4,21 @@ import androidx.lifecycle.*
 import com.example.productsapp.model.ProductsResponse
 import com.example.productsapp.model.ProductsResponseItem
 import com.example.productsapp.model.User
+import com.example.productsapp.repo.LoginRepository
 import com.example.productsapp.repo.ProductsRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class ProductsViewModel @Inject constructor(
+class ProductViewModel @Inject constructor(
         private val repository: ProductsRepository
 ) : ViewModel() {
-
-    //var repository = ProductsRepository(application)
 
     init {
         getAllProducts()
         getElectronics()
         getJewelery()
-        getMen()
-        getWomen()
     }
 
     private var _products = MutableLiveData<List<ProductsResponseItem>>()
@@ -40,56 +37,26 @@ class ProductsViewModel @Inject constructor(
     val jewelery : LiveData<ProductsResponse>
         get() = _jewelery
 
-    private val _men = MutableLiveData<ProductsResponse>()
-    val men : LiveData<ProductsResponse>
-        get() = _men
-
-    private val _women = MutableLiveData<ProductsResponse>()
-    val women : LiveData<ProductsResponse>
-        get() = _women
 
 
-    fun getAllProducts() = viewModelScope.launch {
+
+    private fun getAllProducts() = viewModelScope.launch {
         val response = repository.getAllProducts()
         if (response.isSuccessful){
             _response.postValue(response.body())
         }
     }
 
-    fun getElectronics() = viewModelScope.launch {
+    private fun getElectronics() = viewModelScope.launch {
         val response = repository.getElectronics()
         if (response.isSuccessful){
             _electronics.postValue(response.body())
         }
     }
-    fun getJewelery() = viewModelScope.launch {
+    private fun getJewelery() = viewModelScope.launch {
         val response = repository.getJewelery()
         if (response.isSuccessful){
             _jewelery.postValue(response.body())
         }
     }
-    fun getMen() = viewModelScope.launch {
-        val response = repository.getMen()
-        if (response.isSuccessful){
-            _jewelery.postValue(response.body())
-        }
-    }
-    fun getWomen() = viewModelScope.launch {
-        val response = repository.getWomen()
-        if (response.isSuccessful){
-            _jewelery.postValue(response.body())
-        }
-    }
-
-    fun addToBasket(product : ProductsResponseItem) = viewModelScope.launch{
-        repository.insertBasket(product)
-    }
-
-    fun getProducts(){
-        repository.getBaskets()
-        _products = repository.productsBasketList
-    }
-
-
-
 }

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/bottom_bar"
     app:startDestination="@id/home">
+
     <fragment
         android:id="@+id/home"
         android:name="com.example.productsapp.fragments.ProductsFragment"
@@ -14,6 +14,9 @@
         <action
             android:id="@+id/action_productsFragment_to_profileFragment"
             app:destination="@id/profile" />
+        <action
+            android:id="@+id/action_home_to_detailFragment"
+            app:destination="@id/detailFragment" />
     </fragment>
     <fragment
         android:id="@+id/basket"
@@ -31,4 +34,13 @@
             android:id="@+id/action_profileFragment_to_productsFragment"
             app:destination="@id/home" />
     </fragment>
+
+    <dialog
+        android:id="@+id/detailFragment"
+        android:name="com.example.productapp.fragments.DetailFragment"
+        android:label="DetailFragment" >
+        <argument
+            android:name="product"
+            app:argType="com.example.productsapp.model.ProductsResponseItem" />
+    </dialog>
 </navigation>

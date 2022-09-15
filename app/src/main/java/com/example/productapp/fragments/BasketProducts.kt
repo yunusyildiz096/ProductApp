@@ -55,7 +55,8 @@ class BasketProducts : Fragment(R.layout.fragment_basket_products){
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
 
-        when(item.itemId){
+
+            when(item.itemId){
             R.id.delete ->{
                 var dialogBinding = layoutInflater.inflate(R.layout.delete_dialog,null)
                 val myDialog = Dialog(requireContext())
@@ -117,6 +118,10 @@ class BasketProducts : Fragment(R.layout.fragment_basket_products){
               myDialog.cancel()
           }
 
+
+
+
+
       }
 
       if(activity is AppCompatActivity){
@@ -129,5 +134,9 @@ class BasketProducts : Fragment(R.layout.fragment_basket_products){
 
   }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        fragmentBinding = null
+    }
 
 }

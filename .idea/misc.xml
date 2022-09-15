@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/yildi/AndroidStudioProjects/ProductApp/app/src/main/res/drawable/basket_price_background.xml" value="0.2203125" />
+        <entry key="..\:/Users/yildi/AndroidStudioProjects/ProductApp/app/src/main/res/drawable/bottom_back_ground.xml" value="0.147" />
         <entry key="..\:/Users/yildi/AndroidStudioProjects/ProductApp/app/src/main/res/drawable/ic_back.xml" value="0.2203125" />
         <entry key="..\:/Users/yildi/AndroidStudioProjects/ProductApp/app/src/main/res/drawable/ic_baseline_check_24.xml" value="0.2203125" />
         <entry key="..\:/Users/yildi/AndroidStudioProjects/ProductApp/app/src/main/res/drawable/ic_baseline_close_24.xml" value="0.2203125" />
@@ -11,20 +12,23 @@
         <entry key="..\:/Users/yildi/AndroidStudioProjects/ProductApp/app/src/main/res/drawable/ic_logout.xml" value="0.2203125" />
         <entry key="..\:/Users/yildi/AndroidStudioProjects/ProductApp/app/src/main/res/drawable/products_category_border.xml" value="0.2203125" />
         <entry key="..\:/Users/yildi/AndroidStudioProjects/ProductApp/app/src/main/res/layout/activity_login.xml" value="0.20416666666666666" />
-        <entry key="..\:/Users/yildi/AndroidStudioProjects/ProductApp/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Users/yildi/AndroidStudioProjects/ProductApp/app/src/main/res/layout/activity_main.xml" value="0.18" />
         <entry key="..\:/Users/yildi/AndroidStudioProjects/ProductApp/app/src/main/res/layout/activity_splash.xml" value="0.19010416666666666" />
         <entry key="..\:/Users/yildi/AndroidStudioProjects/ProductApp/app/src/main/res/layout/basket_item.xml" value="0.1" />
         <entry key="..\:/Users/yildi/AndroidStudioProjects/ProductApp/app/src/main/res/layout/basket_toolbar.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/yildi/AndroidStudioProjects/ProductApp/app/src/main/res/layout/delete_dialog.xml" value="0.14" />
+        <entry key="..\:/Users/yildi/AndroidStudioProjects/ProductApp/app/src/main/res/layout/detail_product.xml" value="0.67" />
         <entry key="..\:/Users/yildi/AndroidStudioProjects/ProductApp/app/src/main/res/layout/details_products.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/yildi/AndroidStudioProjects/ProductApp/app/src/main/res/layout/fragment_basket_products.xml" value="0.20416666666666666" />
-        <entry key="..\:/Users/yildi/AndroidStudioProjects/ProductApp/app/src/main/res/layout/fragment_products.xml" value="0.1" />
-        <entry key="..\:/Users/yildi/AndroidStudioProjects/ProductApp/app/src/main/res/layout/fragment_profile.xml" value="0.22" />
+        <entry key="..\:/Users/yildi/AndroidStudioProjects/ProductApp/app/src/main/res/layout/fragment_history_order.xml" value="0.203125" />
+        <entry key="..\:/Users/yildi/AndroidStudioProjects/ProductApp/app/src/main/res/layout/fragment_products.xml" value="0.12" />
+        <entry key="..\:/Users/yildi/AndroidStudioProjects/ProductApp/app/src/main/res/layout/fragment_profile.xml" value="0.12" />
         <entry key="..\:/Users/yildi/AndroidStudioProjects/ProductApp/app/src/main/res/layout/fragment_profile_photo.xml" value="0.16" />
         <entry key="..\:/Users/yildi/AndroidStudioProjects/ProductApp/app/src/main/res/layout/fragment_sing_in.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/yildi/AndroidStudioProjects/ProductApp/app/src/main/res/layout/fragment_sing_up.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/yildi/AndroidStudioProjects/ProductApp/app/src/main/res/layout/payment_dialog.xml" value="0.20416666666666666" />
-        <entry key="..\:/Users/yildi/AndroidStudioProjects/ProductApp/app/src/main/res/layout/test.xml" value="0.2" />
+        <entry key="..\:/Users/yildi/AndroidStudioProjects/ProductApp/app/src/main/res/layout/products_item.xml" value="0.25" />
+        <entry key="..\:/Users/yildi/AndroidStudioProjects/ProductApp/app/src/main/res/layout/test.xml" value="0.5" />
         <entry key="..\:/Users/yildi/AndroidStudioProjects/ProductApp/app/src/main/res/menu/basket_total_menu.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/yildi/AndroidStudioProjects/ProductApp/app/src/main/res/menu/bottom_bar_menu.xml" value="0.20416666666666666" />
       </map>

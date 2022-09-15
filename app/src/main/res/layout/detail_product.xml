@@ -74,7 +74,7 @@
                 android:layout_height="wrap_content"
                 android:text="description"
                 android:textStyle="bold"
-                android:textSize="15sp"
+                android:textSize="12sp"
                 android:textColor="@color/app_color"
                 android:layout_marginTop="10dp"
                 />
