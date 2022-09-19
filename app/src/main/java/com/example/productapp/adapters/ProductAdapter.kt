@@ -18,7 +18,6 @@ import com.example.productsapp.model.ProductsResponseItem
 class ProductAdapter : RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() {
     class ProductViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView)
 
-    //var onItemClick : ((ImageView) -> Unit)? = null
     private val diffUtil = object  : DiffUtil.ItemCallback<ProductsResponseItem>(){
         override fun areItemsTheSame(
             oldItem: ProductsResponseItem,
@@ -52,18 +51,15 @@ class ProductAdapter : RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() 
         val imageView = holder.itemView.findViewById<ImageView>(R.id.imageItem)
         val titleText = holder.itemView.findViewById<TextView>(R.id.titleItem)
         val priceText = holder.itemView.findViewById<TextView>(R.id.priceItem)
-        //val basketButton = holder.itemView.findViewById<Button>(R.id.basketButton)
 
-        //titleText.text = productList.title
+        titleText.text = productList.title
         priceText.text = "${productList.price.toString().toFloat()}$"
         imageView.downloadFromUrl(productList.image, placeHolderProgressBar(holder.itemView.context))
         holder.itemView.setOnClickListener {
             val nav = ProductsFragmentDirections.actionHomeToDetailFragment(productList)
             Navigation.findNavController(it).navigate(nav)
         }
-
     }
-
     override fun getItemCount(): Int {
         return  produts.size
     }

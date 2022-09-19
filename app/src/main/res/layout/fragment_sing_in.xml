@@ -8,10 +8,16 @@
     android:orientation="vertical"
     android:padding="20dp">
 
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_gravity="center"
+        android:src="@drawable/ic_baseline_shopping_basket_24"/>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="10dp"
         android:orientation="vertical"
         android:layout_marginBottom="20dp"
         tools:ignore="UselessParent">
@@ -36,6 +42,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:passwordToggleEnabled="true"
+            app:passwordToggleContentDescription=""
             android:hint="Password"
             app:hintTextColor="@color/app_color"
             app:boxStrokeColor="@color/app_color"
@@ -44,6 +51,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:inputType="textPassword"
                 />
         </com.google.android.material.textfield.TextInputLayout>
 

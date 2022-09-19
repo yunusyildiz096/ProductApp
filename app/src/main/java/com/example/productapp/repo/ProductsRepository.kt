@@ -10,10 +10,7 @@ class ProductsRepository @Inject constructor(
     private val dao : BasketDAO,
     private val retrofit: ProductsAPI){
 
-
-
     val productsBasketList = MutableLiveData<List<ProductsResponseItem>>()
-    private val getProduct = MutableLiveData<ProductsResponseItem>()
 
     suspend fun getAllProducts() = retrofit.getAllProducts()
 
@@ -23,11 +20,6 @@ class ProductsRepository @Inject constructor(
 
     suspend fun insertBasket(products : ProductsResponseItem){
         dao.addToBasket(products)
-    }
-
-    suspend fun getBasket(basketId : Int){
-        val products = dao.getBasket(basketId)
-        getProduct.value = products
     }
 
     suspend fun deleteBasket(products: ProductsResponseItem){
@@ -42,7 +34,5 @@ class ProductsRepository @Inject constructor(
     suspend fun allDelete(){
         dao.allDelete()
     }
-
-
 
 }

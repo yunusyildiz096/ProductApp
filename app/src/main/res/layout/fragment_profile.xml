@@ -81,20 +81,11 @@ android:layout_height="match_parent">
         app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
 
         <Button
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:text=""
-            android:textAllCaps="false"
-            android:backgroundTint="@color/white"
-            android:textColor="@color/black"/>
-
-        <Button
             android:id="@+id/singOutBtn"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:text="Log Out"
             android:textAllCaps="false"
-            android:paddingLeft="-50dp"
             android:backgroundTint="@color/white"
             android:textColor="@color/black"/>
     </LinearLayout>

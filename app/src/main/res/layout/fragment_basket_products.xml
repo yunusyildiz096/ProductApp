@@ -25,7 +25,6 @@
             app:title="My Basket"
             />
 
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/basketRecyclerView"
         android:layout_width="match_parent"
@@ -76,5 +75,7 @@
         </LinearLayout>
 
     </LinearLayout>
+
+
 </LinearLayout>
 </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

@@ -6,12 +6,9 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.AsyncListDiffer
-import androidx.recyclerview.widget.AsyncListUtil
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.example.productapp.R
-import com.example.productapp.databinding.BasketItemBinding
 import com.example.productapp.util.downloadFromUrl
 import com.example.productapp.util.placeHolderProgressBar
 import com.example.productsapp.model.ProductsResponseItem

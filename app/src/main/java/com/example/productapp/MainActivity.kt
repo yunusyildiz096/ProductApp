@@ -13,24 +13,21 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
         val navController = navHostFragment.navController
         setupBottomNavMenu(navController)
-
     }
     private fun setupBottomNavMenu(navController: NavController){
 
         val bottomNav = findViewById<BottomNavigationView>(R.id.nav_view)
-
         bottomNav.setupWithNavController(navController)
     }
-
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return item.onNavDestinationSelected(findNavController(R.id.fragmentContainerView)) || super.onOptionsItemSelected(item)
     }
+
 
 }

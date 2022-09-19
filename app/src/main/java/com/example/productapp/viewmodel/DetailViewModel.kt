@@ -12,7 +12,6 @@ import javax.inject.Inject
 class DetailViewModel @Inject constructor(
         private val repository: ProductsRepository
 ) : ViewModel(){
-
     fun addToBasket(product : ProductsResponseItem) = viewModelScope.launch {
         repository.insertBasket(product)
     }

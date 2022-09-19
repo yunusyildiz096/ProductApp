@@ -16,12 +16,10 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.productapp.R
-import com.example.productapp.adapters.ProductAdapter
 import com.example.productapp.databinding.FragmentBasketProductsBinding
 import com.example.productsapp.adapters.BasketAdapter
 import com.example.productsapp.viewmodel.BasketViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class BasketProducts : Fragment(R.layout.fragment_basket_products){
@@ -30,23 +28,24 @@ class BasketProducts : Fragment(R.layout.fragment_basket_products){
     private val viewModel : BasketViewModel by viewModels()
     private val adapter by lazy { BasketAdapter() }
 
-
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val binding = FragmentBasketProductsBinding.bind(view)
         fragmentBinding = binding
+        viewModel.getProducts()
+        fragmentBinding!!.swipeRefreshLayout.setOnRefreshListener {
+            viewModel.getProducts()
+            fragmentBinding!!.swipeRefreshLayout.isRefreshing = false
+        }
 
         observeLiveData()
         dialog()
 
         fragmentBinding!!.paymentLinearLayout.visibility = View.GONE
+
         setHasOptionsMenu(true)
 
-        fragmentBinding!!.swipeRefreshLayout.setOnRefreshListener {
-            viewModel.getProducts()
-            fragmentBinding!!.swipeRefreshLayout.isRefreshing = false
-        }
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -94,6 +93,7 @@ class BasketProducts : Fragment(R.layout.fragment_basket_products){
                         total += it.toFloat()
                     }
                     fragmentBinding!!.paymentLinearLayout.visibility = View.VISIBLE
+
 
                 }
                 fragmentBinding!!.totalBasketTv.text = "${total}$"

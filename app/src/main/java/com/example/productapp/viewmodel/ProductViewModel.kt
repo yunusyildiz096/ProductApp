@@ -3,8 +3,6 @@ package com.example.productsapp.viewmodel
 import androidx.lifecycle.*
 import com.example.productsapp.model.ProductsResponse
 import com.example.productsapp.model.ProductsResponseItem
-import com.example.productsapp.model.User
-import com.example.productsapp.repo.LoginRepository
 import com.example.productsapp.repo.ProductsRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch

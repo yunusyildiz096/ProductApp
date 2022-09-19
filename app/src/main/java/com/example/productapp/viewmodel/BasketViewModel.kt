@@ -23,7 +23,7 @@ class BasketViewModel @Inject constructor(
     fun deleteBasket(product : ProductsResponseItem) = viewModelScope.launch {
         repository.deleteBasket(product)
     }
-     fun getProducts(){
+    fun getProducts(){
         repository.getBaskets()
         _products = repository.productsBasketList
     }

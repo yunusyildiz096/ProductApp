@@ -9,9 +9,6 @@
         android:name="com.example.productsapp.fragments.ProductsFragment"
         android:label="ProductsFragment" >
         <action
-            android:id="@+id/action_productsFragment_to_basketProducts"
-            app:destination="@id/home" />
-        <action
             android:id="@+id/action_productsFragment_to_profileFragment"
             app:destination="@id/profile" />
         <action
@@ -24,6 +21,9 @@
         android:label="BasketProducts" >
         <action
             android:id="@+id/action_basketProducts_to_productsFragment"
+            app:destination="@id/home" />
+        <action
+            android:id="@+id/action_basket_to_home"
             app:destination="@id/home" />
     </fragment>
     <fragment

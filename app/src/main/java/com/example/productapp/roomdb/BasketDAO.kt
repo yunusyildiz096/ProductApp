@@ -1,7 +1,5 @@
 package com.example.productsapp.roomdb
 
-import android.widget.ImageView
-import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.example.productsapp.model.ProductsResponseItem
 
