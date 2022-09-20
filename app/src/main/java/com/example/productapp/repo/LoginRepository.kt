@@ -51,7 +51,7 @@ class LoginRepository(application: Application) {
             docRef.get().addOnSuccessListener { document ->
                 document.let {
                     userInfo.value = User(
-                        document.get("username") as String,
+                        document.get("username") as? String,
                         user.email)
                 }
 
