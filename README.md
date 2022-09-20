@@ -8,9 +8,6 @@
   <img src="https://user-images.githubusercontent.com/99584511/191308896-70672331-0f57-41a9-87ec-27064753e55c.jpg" width="100" />
   <img src="https://user-images.githubusercontent.com/99584511/191309172-3aa6b455-1833-4e7d-b973-11028804449b.jpg" width="100" />  
   <img src="https://user-images.githubusercontent.com/99584511/191309330-9df8c15a-fa0a-4560-be23-447650b6a136.jpg" width="100" />  
-  
-  ![5c2f8bae-89ba-4fea-ae87-e412583b291f]()
-
 </p>
 
 ## Components Used
