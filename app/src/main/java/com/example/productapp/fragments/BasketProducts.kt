@@ -14,7 +14,9 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.productapp.R
 import com.example.productapp.databinding.FragmentBasketProductsBinding
 import com.example.productsapp.adapters.BasketAdapter
@@ -28,23 +30,38 @@ class BasketProducts : Fragment(R.layout.fragment_basket_products){
     private val viewModel : BasketViewModel by viewModels()
     private val adapter by lazy { BasketAdapter() }
 
+    private val swipeCallBack = object : ItemTouchHelper.SimpleCallback(0,ItemTouchHelper.LEFT){
+        override fun onMove(
+            recyclerView: RecyclerView,
+            viewHolder: RecyclerView.ViewHolder,
+            target: RecyclerView.ViewHolder
+        ): Boolean {
+            return true
+        }
+
+        override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+            val layoutPositions = viewHolder.layoutPosition
+            val selectBasket = adapter.baskets[layoutPositions]
+            viewModel.deleteBasket(selectBasket)
+            findNavController().navigate(BasketProductsDirections.actionBasketSelf())
+        }
+
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val binding = FragmentBasketProductsBinding.bind(view)
         fragmentBinding = binding
-        viewModel.getProducts()
-        fragmentBinding!!.swipeRefreshLayout.setOnRefreshListener {
-            viewModel.getProducts()
-            fragmentBinding!!.swipeRefreshLayout.isRefreshing = false
-        }
-
         observeLiveData()
         dialog()
+        viewModel.getProducts()
 
+        fragmentBinding!!.startShoppingBtn.setOnClickListener { startShoppingBtn(it) }
         fragmentBinding!!.paymentLinearLayout.visibility = View.GONE
+        fragmentBinding!!.shopCartLinearLayout.visibility = View.VISIBLE
+        ItemTouchHelper(swipeCallBack).attachToRecyclerView(fragmentBinding!!.basketRecyclerView)
 
         setHasOptionsMenu(true)
-
 
     }
 
@@ -56,7 +73,7 @@ class BasketProducts : Fragment(R.layout.fragment_basket_products){
 
 
             when(item.itemId){
-            R.id.delete ->{
+                R.id.delete ->{
                 var dialogBinding = layoutInflater.inflate(R.layout.delete_dialog,null)
                 val myDialog = Dialog(requireContext())
                 myDialog.setContentView(dialogBinding)
@@ -93,8 +110,7 @@ class BasketProducts : Fragment(R.layout.fragment_basket_products){
                         total += it.toFloat()
                     }
                     fragmentBinding!!.paymentLinearLayout.visibility = View.VISIBLE
-
-
+                    fragmentBinding!!.shopCartLinearLayout.visibility = View.GONE
                 }
                 fragmentBinding!!.totalBasketTv.text = "${total}$"
 
@@ -117,11 +133,6 @@ class BasketProducts : Fragment(R.layout.fragment_basket_products){
               findNavController().navigate(BasketProductsDirections.actionBasketProductsToProductsFragment())
               myDialog.cancel()
           }
-
-
-
-
-
       }
 
       if(activity is AppCompatActivity){
@@ -132,7 +143,12 @@ class BasketProducts : Fragment(R.layout.fragment_basket_products){
           findNavController().navigate(BasketProductsDirections.actionBasketProductsToProductsFragment())
       }
 
+
   }
+
+    private fun startShoppingBtn(view: View){
+        findNavController().navigate(BasketProductsDirections.actionBasketProductsToProductsFragment())
+    }
 
     override fun onDestroyView() {
         super.onDestroyView()

@@ -5,12 +5,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.productapp.R
 import com.example.productapp.util.downloadFromUrl
 import com.example.productapp.util.placeHolderProgressBar
+import com.example.productsapp.fragments.BasketProductsDirections
 import com.example.productsapp.model.ProductsResponseItem
 
 class BasketAdapter : RecyclerView.Adapter<BasketAdapter.BasketViewHolder>() {

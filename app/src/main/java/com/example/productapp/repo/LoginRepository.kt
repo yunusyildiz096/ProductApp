@@ -29,6 +29,8 @@ class LoginRepository(application: Application) {
 
                         }
                     }
+            }.addOnFailureListener {
+
             }
 
         }

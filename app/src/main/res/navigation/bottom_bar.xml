@@ -25,6 +25,9 @@
         <action
             android:id="@+id/action_basket_to_home"
             app:destination="@id/home" />
+        <action
+            android:id="@+id/action_basket_self"
+            app:destination="@id/basket" />
     </fragment>
     <fragment
         android:id="@+id/profile"
