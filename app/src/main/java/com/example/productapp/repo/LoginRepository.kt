@@ -14,7 +14,7 @@ class LoginRepository(application: Application) {
     private var db = Firebase.firestore
     var userInfo = MutableLiveData<User>()
 
-    fun singUp(email : String,password : String,userName : String){
+    fun signUp(email : String,password : String,userName : String){
 
         auth.createUserWithEmailAndPassword(email, password).addOnSuccessListener {
 
@@ -35,7 +35,7 @@ class LoginRepository(application: Application) {
 
         }
 
-    fun singIn(email: String,password: String){
+    fun signIn(email: String,password: String){
         auth.signInWithEmailAndPassword(email,password).addOnSuccessListener {
 
         }.addOnFailureListener {
@@ -61,7 +61,7 @@ class LoginRepository(application: Application) {
         }
     }
 
-    fun singOut(){
+    fun signOut(){
         auth.signOut()
     }
 

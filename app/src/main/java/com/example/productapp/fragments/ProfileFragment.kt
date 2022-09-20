@@ -25,7 +25,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile){
         viewModel.getUser()
 
         binding.singOutBtn.setOnClickListener {
-            viewModel.singOut().also {
+            viewModel.signOut().also {
                 val i = Intent(requireActivity(),LoginActivity::class.java)
                 startActivity(i)
                 requireActivity().finish()

@@ -15,16 +15,16 @@ class LoginViewModel(application: Application) :  AndroidViewModel(application){
     val userInfo : LiveData<User>
         get() = _userInfo
 
-    fun singUp(email : String,password : String,userName : String){
-        repository.singUp(email, password,userName)
+    fun signUp(email : String,password : String,userName : String){
+        repository.signUp(email, password,userName)
     }
 
-    fun singIn(email : String,password : String){
-        repository.singIn(email,password)
+    fun signIn(email : String,password : String){
+        repository.signIn(email,password)
     }
 
-    fun singOut(){
-        repository.singOut()
+    fun signOut(){
+        repository.signOut()
     }
 
     fun getUser(){

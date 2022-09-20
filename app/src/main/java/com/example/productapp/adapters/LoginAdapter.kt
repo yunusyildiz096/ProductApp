@@ -4,8 +4,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.example.productsapp.login.SingInFragment
-import com.example.productsapp.login.SingUpFragment
+import com.example.productsapp.login.SignInFragment
+import com.example.productsapp.login.SignUpFragment
 class LoginAdapter(fragmentManager: FragmentManager,lifecycle: Lifecycle) : FragmentStateAdapter(fragmentManager, lifecycle) {
     override fun getItemCount(): Int {
         return 2
@@ -14,10 +14,10 @@ class LoginAdapter(fragmentManager: FragmentManager,lifecycle: Lifecycle) : Frag
     override fun createFragment(position: Int): Fragment {
         return when(position){
             0 -> {
-                SingUpFragment()
+                SignUpFragment()
             }
             1 -> {
-                SingInFragment()
+                SignInFragment()
             }
             else -> {
                 Fragment()
